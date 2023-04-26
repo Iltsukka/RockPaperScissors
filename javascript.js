@@ -1,6 +1,7 @@
 const options = ["Rock", "Paper", "Scissors"]
 let playerScore
 let computerScore
+let totalNumberOfGames
 
 function playerSelection() {
     let playerSelection = prompt("Choose rock, paper or scissors.").toLowerCase()
@@ -18,6 +19,7 @@ function getComputerChoice() {
 
 
 function playRound(playerSelection, computerSelection) {
+    totalNumberOfGames += 1
     if (playerSelection === "rock" && computerSelection === "Paper") {
         computerScore += 1
         return "You Lose! Paper beats Rock."
@@ -41,6 +43,7 @@ function playRound(playerSelection, computerSelection) {
         computerScore += 0.5
         return "It is a tie!"
     } else {
+        totalNumberOfGames -= 1
         return "Please type a valid input"
     }
         
@@ -51,11 +54,11 @@ function playRound(playerSelection, computerSelection) {
 function game() {
     playerScore = 0
     computerScore = 0
-    console.log(playRound(playerSelection(), getComputerChoice()))
-    console.log(playRound(playerSelection(), getComputerChoice()))
-    console.log(playRound(playerSelection(), getComputerChoice()))
-    console.log(playRound(playerSelection(), getComputerChoice()))
-    console.log(playRound(playerSelection(), getComputerChoice()))
+    totalNumberOfGames = 0
+    while (totalNumberOfGames < 5) {
+        console.log(playRound(playerSelection(), getComputerChoice()))
+    }
+
     console.log(`At the end of 5 difficult rounds, the total score is ${playerScore} - ${computerScore}. Thank you for playing!` )
 }
 
