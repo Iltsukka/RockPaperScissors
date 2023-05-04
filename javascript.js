@@ -1,7 +1,8 @@
 const options = ["Rock", "Paper", "Scissors"]
-let playerScore
-let computerScore
+let playerScore = 0
+let computerScore = 0
 let totalNumberOfGames
+
 
 function playerSelection() {
     let playerSelection = prompt("Choose rock, paper or scissors.").toLowerCase()
@@ -53,23 +54,76 @@ function playRound(playerSelection, computerSelection) {
 const button1 = document.createElement('button')
 const button2 = document.createElement('button')
 const button3 = document.createElement('button')
+const newLine = document.createElement('p')
+const results = document.createElement('div')
+const score = document.createElement('p')
 
+results.textContent = "The result of the game will be displayed here!"
+score.textContent = ` ${playerScore} - ${computerScore}`
 button1.textContent = "Rock"
 button2.textContent = "Paper"
 button3.textContent = "Scissors"
 
-button1.addEventListener('click', function() {
-    console.log(playRound("rock", getComputerChoice()))
+// forEach function to make code cleaner.
+button1.addEventListener('click', function myButton1(e) {
+    results.textContent = playRound("rock", getComputerChoice())
+    score.textContent = ` ${playerScore} - ${computerScore}`
+    if (playerScore >= 5 && computerScore >= 5 && playerScore===computerScore) {
+        score.textContent = `The game is now over. Final score: ${playerScore} - ${computerScore}. Game ends in a draw!`
+        
+        
+    } else if (playerScore >=5 && computerScore <5){
+        score.textContent = `The game is now over. Final score: ${playerScore} - ${computerScore}. Player wins!`
+        
+        
+    } else if (playerScore <5 && computerScore >=5){
+        
+        score.textContent = `The game is now over. Final score: ${playerScore} - ${computerScore}. Computer wins!`
+        
+        
+    }   
 })
-button2.addEventListener('click', function() {
-    console.log(playRound("paper",getComputerChoice()))
+button2.addEventListener('click', function myButton2(e) {
+    results.textContent = playRound("paper",getComputerChoice())
+    score.textContent = ` ${playerScore} - ${computerScore}`
+    if (playerScore >= 5 && computerScore >= 5 && playerScore===computerScore) {
+        score.textContent = `The game is now over. Final score: ${playerScore} - ${computerScore}. Game ends in a draw!`
+        
+    } else if (playerScore >=5 && computerScore <5){
+        score.textContent = `The game is now over. Final score: ${playerScore} - ${computerScore}. Player wins!`
+        
+    } else if (playerScore <5 && computerScore >=5){
+        score.textContent = `The game is now over. Final score: ${playerScore} - ${computerScore}. Computer wins!`
+        
+    } 
 })
-button3.addEventListener('click', function() {
-    console.log(playRound("scissors",getComputerChoice()))
+button3.addEventListener('click', function myButton3(e) {
+    results.textContent = playRound("scissors",getComputerChoice())
+    score.textContent = ` ${playerScore} - ${computerScore}`
+    if (playerScore >= 5 && computerScore >= 5 && playerScore===computerScore) {
+        score.textContent = `The game is now over. Final score: ${playerScore} - ${computerScore}. Game ends in a draw!`
+        
+        
+    } else if (playerScore >=5 && computerScore <5){
+        score.textContent = `The game is now over. Final score: ${playerScore} - ${computerScore}. Player wins!`
+        
+        
+    } else if (playerScore <5 && computerScore >=5){
+        score.textContent = `The game is now over. Final score: ${playerScore} - ${computerScore}. Computer wins!`
+        
+        
+    }
 })
+
+
+
 
 document.body.appendChild(button1)
 document.body.appendChild(button2)
 document.body.appendChild(button3)
+document.body.appendChild(newLine)
+document.body.appendChild(results)
+document.body.appendChild(score)
+
 
 
