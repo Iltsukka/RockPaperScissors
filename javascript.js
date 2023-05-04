@@ -12,6 +12,7 @@ function playerSelection() {
 
 
 function getComputerChoice() {
+    
     let choice = options[Math.floor(Math.random()*options.length)]
     return choice
 }
@@ -49,17 +50,26 @@ function playRound(playerSelection, computerSelection) {
         
 }
 
+const button1 = document.createElement('button')
+const button2 = document.createElement('button')
+const button3 = document.createElement('button')
+
+button1.textContent = "Rock"
+button2.textContent = "Paper"
+button3.textContent = "Scissors"
+
+button1.addEventListener('click', function() {
+    console.log(playRound("rock", getComputerChoice()))
+})
+button2.addEventListener('click', function() {
+    console.log(playRound("paper",getComputerChoice()))
+})
+button3.addEventListener('click', function() {
+    console.log(playRound("scissors",getComputerChoice()))
+})
+
+document.body.appendChild(button1)
+document.body.appendChild(button2)
+document.body.appendChild(button3)
 
 
-function game() {
-    playerScore = 0
-    computerScore = 0
-    totalNumberOfGames = 0
-    while (totalNumberOfGames < 5) {
-        console.log(playRound(playerSelection(), getComputerChoice()))
-    }
-
-    console.log(`At the end of 5 difficult rounds, the total score is ${playerScore} - ${computerScore}. Thank you for playing!` )
-}
-
-game()
