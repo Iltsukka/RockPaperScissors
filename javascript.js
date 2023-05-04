@@ -2,6 +2,7 @@ const options = ["Rock", "Paper", "Scissors"]
 let playerScore = 0
 let computerScore = 0
 let totalNumberOfGames
+let gameOver = false
 
 
 function playerSelection() {
@@ -64,53 +65,68 @@ button1.textContent = "Rock"
 button2.textContent = "Paper"
 button3.textContent = "Scissors"
 
+
+
 // forEach function to make code cleaner.
 button1.addEventListener('click', function myButton1(e) {
+    if (gameOver) {
+        button1.removeEventListener('click',myButton1)
+        return
+    }
     results.textContent = playRound("rock", getComputerChoice())
     score.textContent = ` ${playerScore} - ${computerScore}`
     if (playerScore >= 5 && computerScore >= 5 && playerScore===computerScore) {
         score.textContent = `The game is now over. Final score: ${playerScore} - ${computerScore}. Game ends in a draw!`
-        
+        gameOver = true
         
     } else if (playerScore >=5 && computerScore <5){
         score.textContent = `The game is now over. Final score: ${playerScore} - ${computerScore}. Player wins!`
-        
+        gameOver = true
         
     } else if (playerScore <5 && computerScore >=5){
         
         score.textContent = `The game is now over. Final score: ${playerScore} - ${computerScore}. Computer wins!`
-        
+        gameOver = true
         
     }   
 })
 button2.addEventListener('click', function myButton2(e) {
+    if (gameOver) {
+        button2.removeEventListener('click',myButton2)
+        return
+    }
+
     results.textContent = playRound("paper",getComputerChoice())
     score.textContent = ` ${playerScore} - ${computerScore}`
     if (playerScore >= 5 && computerScore >= 5 && playerScore===computerScore) {
         score.textContent = `The game is now over. Final score: ${playerScore} - ${computerScore}. Game ends in a draw!`
-        
+        gameOver = true
     } else if (playerScore >=5 && computerScore <5){
         score.textContent = `The game is now over. Final score: ${playerScore} - ${computerScore}. Player wins!`
-        
+        gameOver = true
     } else if (playerScore <5 && computerScore >=5){
         score.textContent = `The game is now over. Final score: ${playerScore} - ${computerScore}. Computer wins!`
-        
+        gameOver = true
     } 
 })
 button3.addEventListener('click', function myButton3(e) {
+    if (gameOver) {
+        button3.removeEventListener('click',myButton3)
+        return
+    }
     results.textContent = playRound("scissors",getComputerChoice())
     score.textContent = ` ${playerScore} - ${computerScore}`
     if (playerScore >= 5 && computerScore >= 5 && playerScore===computerScore) {
         score.textContent = `The game is now over. Final score: ${playerScore} - ${computerScore}. Game ends in a draw!`
-        
+        gameOver = true
         
     } else if (playerScore >=5 && computerScore <5){
         score.textContent = `The game is now over. Final score: ${playerScore} - ${computerScore}. Player wins!`
-        
+        gameOver = true
         
     } else if (playerScore <5 && computerScore >=5){
         score.textContent = `The game is now over. Final score: ${playerScore} - ${computerScore}. Computer wins!`
-        
+        gameOver = true
         
     }
 })
